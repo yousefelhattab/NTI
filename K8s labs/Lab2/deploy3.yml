@@ -1,0 +1,19 @@
+# Failed to create the third pod as quota is 2 pods only
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: nti
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ingot
+  namespace: gold
+spec:
+  containers:
+  - name: app
+    image: alpine
+    command: ["/bin/sh", "-c"]
+    resources: #must be specified as the quota is specified in the namespace
+      requests:
+        memory: "200Mi"
+      limits:
+        memory: "400Mi"
