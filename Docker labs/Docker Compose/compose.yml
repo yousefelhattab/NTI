@@ -1,0 +1,27 @@
+version: '3.8'  
+
+services:  
+  web:  
+    image: nginx  
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+      - fullstack
+    
+
+  db:
+    image: mysql:5.7 
+    networks:
+      - backend
+      - fullstack
+    volumes:
+      - db_data:/var/lib/mysql  
+
+networks:  
+  frontend:  
+  backend:  
+  fullstack:
+
+volumes:  
+  db_data:  
