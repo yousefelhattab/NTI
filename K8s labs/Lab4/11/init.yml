@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: red
+spec:
+  initContainers:
+  - name: init-sleep
+    image: busybox
+    command: ["sleep", "20"] # Init container sleeps for 20 seconds
+  containers:
+  - name: redis
+    image: redis

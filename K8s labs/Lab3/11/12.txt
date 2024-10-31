@@ -1,0 +1,3 @@
+12-Naming Convention: The names of static pods typically end with the name of the node (e.g., my-static-pod-minikube),
+ making it easier to identify them.
+

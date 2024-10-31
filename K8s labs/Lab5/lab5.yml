@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: file-writer-pod
+spec:
+  containers:
+  - name: writer1
+    image: alpine
+    command: ["/bin/sh", "-c"]
+    args: ["echo 'Hello from writer 1' >> /data/shared-file.txt; sleep 3600"]
+    volumeMounts:
+    - mountPath: /data
+      name: shared-volume
+
+  - name: writer2
+    image: alpine
+    command: ["/bin/sh", "-c"]
+    args: ["echo 'Hello from writer 2' >> /data/shared-file.txt; sleep 3600"]
+    volumeMounts:
+    - mountPath: /data
+      name: shared-volume
+
+  - name: reader
+    image: alpine
+    command: ["/bin/sh", "-c"]
+    args: ["cat /data/shared-file.txt; sleep 3600"]
+    volumeMounts:
+    - mountPath: /data
+      name: shared-volume
+
+  volumes:
+  - name: shared-volume  #emptyDir volume creation
+
